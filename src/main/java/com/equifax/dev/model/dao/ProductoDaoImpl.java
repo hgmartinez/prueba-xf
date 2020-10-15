@@ -1,8 +1,11 @@
 package com.equifax.dev.model.dao;
 
+import com.equifax.dev.model.entity.Productos;
 import com.equifax.dev.utils.DaoUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -13,11 +16,12 @@ public class ProductoDaoImpl extends GeneralDao implements ProductoDao {
 	DaoUtils eUtils;
 
 	@SuppressWarnings("unchecked")
-	public List<Object> findAllActiveProdByCliente(Long cliId) {
+	public List<Productos> findAllActiveProdByCliente(Long cliId) {
 		String hqlQuery = eUtils.getQByName("pdoCte.getAllActivesByCteId");
-		String active = "1";
+		String active = "i";
+		List<Productos> list = new ArrayList<>();
 		try {
-			List<Object> list = (List<Object>) findByHQuery(hqlQuery, new Object[]{cliId, active});
+			list = (List<Productos>) findByHQuery(hqlQuery, new Object[]{cliId, active});
 			return list;
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

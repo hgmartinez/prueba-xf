@@ -3,7 +3,7 @@
 	<query name="pdoCte.getAllActivesByCteId">
 		<![CDATA[
 				select
-					cli.idcliente ,cli.nombre_cliente, pro.nombre_producto, pro.estado
+					pro.idproducto ,pro.nombre_producto,pro.fecha_creaion, pro.estado
 				from
 					productoCliente cat, cliente cli, productos pro
 				where
